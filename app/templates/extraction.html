@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}Opis projektu {% endblock %}
 {% block content %}
-<form class=" container col-2 text-center" style="margin-top: 50px;" action="">
-<div class="mb-3">
-<label for="ProductID" class="form-label">ID produktu:</label>
-<input class="form-control" id="Id1">
-<button onclick="" type="button" class="btn btn-secondary" style="margin-top: 10px;">Uruchom</button>
-</div>
+<form class=" container col-2 text-center" style="margin-top: 50px;" method="POST" action="">
+    <div class="mb-3">
+        <label for="product_id" class="form-label">ID produktu:</label>
+        <input class="form-control" id="Id1" name="product_code" required id="product_code">
+        <button onclick="" type="submit" class="btn btn-secondary" style="margin-top: 10px;">Pobierz</button>
+    </div>
 </form>
 {% endblock %}
