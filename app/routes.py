@@ -8,8 +8,10 @@ from bs4 import BeautifulSoup
 from app.utils import extract_tag, selectors
 from IPython.display import HTML
 from urllib.parse import quote
+import matplotlib as mpl
+mpl.use('Agg')
 from matplotlib import pyplot as plt
-from io import BytesIO
+import io
 import base64
 import numpy as np
 
@@ -139,24 +141,26 @@ def charts(product_code):
     chart1.set_ylabel('Liczba opinii')
     chart1.set_title('Rozkład ocen')
 
-    chart1_path = f"./app/data/products/chart1{product_code}.png"
-    fig1.savefig(chart1_path)
+    chart1_base64= io.BytesIO()
+    plt.savefig(chart1_base64,format='png')
     plt.close(fig1)
+    chart1_base64.seek(0)
+    chart1_base64_encoded = base64.b64encode(chart1_base64.getvalue()).decode('utf-8')
+    chart1_base64.close()
 
     fig2, ax2 = plt.subplots()
     chart2 = opinions.Polecenie.value_counts(dropna=False).plot.pie(label="", autopct="%1.1f%%", ax=ax2)
     chart2.set_title("Rekomendacje")
 
-
-    chart2_path = f"./app/data/products/chart2{product_code}.png"
-    fig2.savefig(chart2_path)
+    chart2_base64= io.BytesIO()
+    plt.savefig(chart2_base64,format='png')
     plt.close(fig2)
+    chart2_base64.seek(0)
+    chart2_base64_encoded = base64.b64encode(chart2_base64.getvalue()).decode('utf-8')
+    chart2_base64.close()
 
-    with open(chart1_path, "rb") as f1:
-        chart1_base64 = base64.b64encode(f1.read()).decode('utf-8')
-    with open(chart2_path, "rb") as f2:
-        chart2_base64 = base64.b64encode(f2.read()).decode('utf-8')
-    return render_template("charts.html", product_code=product_code, chart1_base64=chart1_base64, chart2_base64=chart2_base64)
+
+    return render_template("charts.html", product_code=product_code, chart1_base64=chart1_base64_encoded, chart2_base64=chart2_base64_encoded)
 @app.route('/author')
 def author():
     return render_template("author.html")
