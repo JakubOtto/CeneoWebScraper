@@ -8,4 +8,8 @@
         <button onclick="" type="submit" class="btn btn-secondary" style="margin-top: 10px;">Pobierz</button>
     </div>
 </form>
+{% if error_message %}
+<p style="color: red; font-size:50px; text-align: center;">{{error_message}}</p>
+{% endif %}
+
 {% endblock %}

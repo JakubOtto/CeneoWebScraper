@@ -3,37 +3,12 @@
 {% block content %}
 <h3>{{product_code}}</h3>
 {{opinions|safe}}
-<div class="container" style="margin-top: 50px;">
-    <h1 style="font-size: 50px; text-align: center;">NAZWA PRODUKTU</h1>
-    <div class="container" style="margin-top: 50px;">
-        <table id="products" class="table table-bordered text-center" style="margin-top: 50px;">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Opinie o produkcie</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="btn-group" role="group" style="margin-top: 15px;">
-        <button type="button" class="btn btn-secondary">Pobierz .csv</button>
-        <button type="button" class="btn btn-secondary">Pobierz .xlsx</button>
-        <button type="button" class="btn btn-secondary">Pobierz .json</button>
-    </div>
-        <button style="float:right; margin-top: 15px;" type="button" class="btn btn-secondary" onclick="">Przejdź do strony z wykresami ></button>
+<div class="container">
+    <a href="{{ url_for('charts', product_code=product_code) }}" class="btn btn-primary " class="" style="text-align: right; margin-bottom: 50px;">Przejdz do wykresow</a>
 </div>
 {% endblock %}
 {% block scripts %}
+
 <script>
     $(document).ready( function () {
         $('#products').DataTable();

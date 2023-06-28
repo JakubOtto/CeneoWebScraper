@@ -11,16 +11,16 @@ def extract_tag(ancestor,selector=None, attribute=None, return_list=False):
         return None
     
 selectors = {
-        "opinion_id": [None,"data-entry-id"],
-        "author" : ["span.user-post__author-name"],
-        "recommendation" : ["span.user-post__author-recomendation > em"],
-        "rating" : ["span.user-post__score-count"],
-        "verified" : ["div.review-pz"],
-        "post_date" : ["span.user-post__published > time:nth-child(1)","datetime"],
-        "purchase_date" : ["span.user-post__published > time:nth-child(2)","datetime"],
-        "vote_up" : ["button.vote-yes","data-total-vote"],
-        "vote_down" : ["button.vote-no","data-total-vote"],
-        "content" : ["div.user-post__text"],
-        "cons" : ["div.review-feature__title--negatives ~ div.review-feature__item", None, True],
-        "pros" : ["div.review-feature__title--positives ~ div.review-feature__item", None, True],
+        "ID_Opinii": [None,"data-entry-id"],
+        "Autor" : ["span.user-post__author-name"],
+        "Polecenie" : ["span.user-post__author-recomendation > em"],
+        "Ocena" : ["span.user-post__score-count"],
+        "Weryfikacja" : ["div.review-pz"],
+        "Data publikacji" : ["span.user-post__published > time:nth-child(1)","datetime"],
+        "Data zakupu" : ["span.user-post__published > time:nth-child(2)","datetime"],
+        "Przydatnosc" : ["button.vote-yes","data-total-vote"],
+        "Nieprzydatnosc" : ["button.vote-no","data-total-vote"],
+        "Zawartosc" : ["div.user-post__text"],
+        "Wady" : ["div.review-feature__title--negatives ~ div.review-feature__item", None, True],
+        "Zalety" : ["div.review-feature__title--positives ~ div.review-feature__item", None, True],
 }

@@ -3,9 +3,12 @@
 {% block content %}
 <div class="container" style="text-align: center; margin-top: 50px;">
     <h1>WYKRESY</h1>
+    <img src="data:image/png;base64,{{ chart1_base64 }}" alt="Wykres">
+    <img src="data:image/png;base64,{{ chart2_base64 }}" alt="Wykres">
 </div>
-            
+
 </div>
-    <button type="button" class="btn btn-secondary" onclick="">Wróć do strony produktu</button>
+<a href="{{ url_for('productsite', product_code=product_code) }}" class="btn btn-secondary " class="" style="text-align: center; margin-bottom: 50px;">Wróć do strony produktu</a>
 </div>
+
 {% endblock %}
