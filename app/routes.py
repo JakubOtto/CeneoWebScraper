@@ -11,6 +11,7 @@ from urllib.parse import quote
 import matplotlib as mpl
 mpl.use('Agg')
 from matplotlib import pyplot as plt
+import openpyxl
 import io
 import base64
 import numpy as np
